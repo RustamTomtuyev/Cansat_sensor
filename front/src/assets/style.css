@@ -5,9 +5,23 @@
     overflow-x:hidden;
     background-color:lightgray;
 }
-
-/* .scrollable-table {
-    max-height: 300px;
-    overflow-y: auto;
-  } */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
   
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+    border-radius : 2em;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #D02323; 
+    border-radius: 2em;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D02323; 
+  }

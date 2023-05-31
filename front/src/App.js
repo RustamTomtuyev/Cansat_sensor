@@ -14,16 +14,10 @@
 //     socket.on('updateSensorData', (data) => {
 //       console.log(data)
 //       const { value } = data;
-      
-      
-      
-//       setSensorValue(` ${value}`);
-      
-      
-//     });
 
-   
-    
+//       setSensorValue(` ${value}`);
+
+//     });
 
 //     socket.on('disconnect', () => {
 //       console.log('WebSocket connection closed');
@@ -52,10 +46,8 @@
 
 // export default App;
 
-
-
-import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import React, { useEffect, useState } from "react";
+import io from "socket.io-client";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import "animate.css";
 import {
@@ -78,61 +70,54 @@ import "./assets/style.css";
 
 const App = () => {
   const [sensorValue, setSensorValue] = useState([]);
-  const socket = io('http://localhost:5000');
+  const socket = io("http://localhost:5000");
   const handleClick = () => {
-    const mes='reset'
-    socket.emit('reset',mes)
+    const mes = "reset";
+    socket.emit("reset", mes);
   };
 
   useEffect(() => {
-    const socket = io('http://localhost:5000');
+    const socket = io("http://localhost:5000");
 
-    socket.on('connect', () => {
-      console.log('WebSocket connection established');
+    socket.on("connect", () => {
+      console.log("WebSocket connection established");
     });
 
-    socket.on('updateSensorData', (event) => {
+    socket.on("updateSensorData", (event) => {
       // console.log(event)
-      console.log(Object.values(event))
+      console.log(Object.values(event));
       setSensorValue(Object.values(event));
       // setSensorValue(event)
       // Process the received data as needed
       // console.log(recievedData);
       // setXbeeData(recievedData);
       // const { value } = data;
-      
-      
-      
+
       // setSensorValue(` ${value}`);
     });
     const handleClick = () => {
-      const mes='reset'
-      socket.emit('reset',mes)
+      const mes = "reset";
+      socket.emit("reset", mes);
     };
     // console.log(sensorValue)
-   
-    socket.on('disconnect', () => {
-      console.log('WebSocket connection closed');
+
+    socket.on("disconnect", () => {
+      console.log("WebSocket connection closed");
     });
-    
 
     return () => {
       socket.disconnect();
     };
   }, []);
 
-  
-  
   const data = [
     { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
     { name: "Page B", uv: 500, pv: 2500, amt: 2500 },
     { name: "Page C", uv: 600, pv: 2600, amt: 2600 },
   ];
   return (
-    
     <div className="main_container">
       <Flex flexDir={"column"} alignItems={"center"}>
-        
         <Flex
           w={"90%"}
           justifyContent={"space-between"}
@@ -146,6 +131,7 @@ const App = () => {
             className="graph animate_animated animate_fadeInLeft"
             border="2px solid #D02323"
             borderRadius={"10px"}
+            p={"1em"}
           >
             <Flex>
               <Heading fontFamily={"inherit"}>Telemetry</Heading>
@@ -223,7 +209,10 @@ const App = () => {
                 </Button>
               </Box>
               <Box>
-                <Button onClick={handleClick} _hover={{ backgroundColor: "#d02323", color: "white" }}>
+                <Button
+                  onClick={handleClick}
+                  _hover={{ backgroundColor: "#d02323", color: "white" }}
+                >
                   Reset
                 </Button>
               </Box>
@@ -239,7 +228,15 @@ const App = () => {
           m={"1em auto 0 auto"}
           className="table animate_animated animate_fadeInDown"
         >
-          <TableContainer border="2px solid #D02323" borderRadius={"10px"} className='table-container'>
+          <TableContainer
+            border="2px solid #D02323"
+            borderRadius={"10px"}
+            className="table-container" 
+            maxH="20em"
+            overflowY="scroll"
+            overflowX={"hidden"}
+            
+          >
             <Table variant="simple">
               <Thead backgroundColor={"#D02323"}>
                 <Tr>
@@ -256,7 +253,7 @@ const App = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                  {sensorValue.map((element, index) => (
+                {/* {sensorValue.map((element, index) => (
                     <Tr key={index}>
                       <Td>{element[0]}</Td>
                       <Td>{element[1]}</Td>
@@ -269,7 +266,79 @@ const App = () => {
                       <Td>{element[8]}</Td>
                       <Td>{element[9]}</Td>
                     </Tr>
-                  ))}
+                  ))} */}
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
+                <Tr>
+                  <Td>a </Td>
+                  <Td>b</Td>
+                  <Td>c</Td>
+                  <Td>d</Td>
+                  <Td>e</Td>
+                  <Td>q</Td>
+                  <Td>w</Td>
+                  <Td>e</Td>
+                  <Td>r</Td>
+                  <Td>t</Td>
+                </Tr>
               </Tbody>
             </Table>
           </TableContainer>
