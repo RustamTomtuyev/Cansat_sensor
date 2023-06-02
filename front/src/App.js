@@ -128,7 +128,7 @@ const App = () => {
           <Flex
             flexDirection={"column"}
             w="60%"
-            className="graph animate_animated animate_fadeInLeft"
+            className="graph animate__animated animate__fadeInLeft"
             border="2px solid #D02323"
             borderRadius={"10px"}
             p={"1em"}
@@ -186,7 +186,7 @@ const App = () => {
           <Flex
             flexDirection={"column"}
             w={"40%"}
-            className="pictures animate_animated animate_fadeInRight"
+            className="pictures animate__animated animate__fadeInRight"
             border="2px solid #D02323"
             borderRadius={"10px"}
             p="1em"
@@ -226,7 +226,7 @@ const App = () => {
         </Flex>
         <Flex
           m={"1em auto 0 auto"}
-          className="table animate_animated animate_fadeInDown"
+          className="table animate__animated animate__fadeInDown"
         >
           <TableContainer
             border="2px solid #D02323"
