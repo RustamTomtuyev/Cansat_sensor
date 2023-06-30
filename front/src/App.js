@@ -22,6 +22,7 @@ import "./assets/style.css";
 
 const App = () => {
   const [sensorValue, setSensorValue] = useState([]);
+  const tempSensorValue = [10, 20, 30, 40, 50, 60, 70, 80, 90]
   const socket = io("http://localhost:5000");
   const handleClick = () => {
     const mes = "reset";
@@ -56,11 +57,10 @@ const App = () => {
     };
   }, []);
 
-  const data = [
-    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 500, pv: 2500, amt: 2500 },
-    { name: "Page C", uv: 600, pv: 2600, amt: 2600 },
-  ];
+  const data = tempSensorValue.map((element, index) => ({
+    name: index.toString(),
+    uv: element,
+  }));
   return (
     <div className="main_container">
       <Flex flexDir={"column"} alignItems={"center"}>
@@ -177,11 +177,11 @@ const App = () => {
           <TableContainer
             border="2px solid #D02323"
             borderRadius={"10px"}
-            className="table-container" 
+            className="table-container"
             maxH="20em"
             overflowY="scroll"
             overflowX={"hidden"}
-            
+
           >
             <Table variant="simple">
               <Thead backgroundColor={"#D02323"}>
@@ -199,7 +199,7 @@ const App = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {sensorValue.map((element, index) => (
+                {/* {sensorValue.map((element, index) => (
                     <Tr key={index}>
                       <Td>{element[0]}</Td>
                       <Td>{element[1]}</Td>
@@ -212,79 +212,16 @@ const App = () => {
                       <Td>{element[8]}</Td>
                       <Td>{element[9]}</Td>
                     </Tr>
-                  ))}
-                {/* <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr>
-                <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr>
-                <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr>
-                <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr>
-                <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr>
-                <Tr>
-                  <Td>a </Td>
-                  <Td>b</Td>
-                  <Td>c</Td>
-                  <Td>d</Td>
-                  <Td>e</Td>
-                  <Td>q</Td>
-                  <Td>w</Td>
-                  <Td>e</Td>
-                  <Td>r</Td>
-                  <Td>t</Td>
-                </Tr> */}
+                  ))} */}
+                {tempSensorValue.map((element, index) => (
+                  <Tr key={index}>
+                    {tempSensorValue.map((value, i) => (
+                      <Td key={i}>{value}</Td>
+                    ))}
+                  </Tr>
+                ))}
+
+
               </Tbody>
             </Table>
           </TableContainer>
